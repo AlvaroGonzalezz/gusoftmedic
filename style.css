@@ -4,7 +4,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 !important;
     height: 100vh;
     background: linear-gradient(90deg, #acfffb, #74b9dc);
 }
@@ -255,3 +255,38 @@ header a:hover {
     box-shadow: inset 4px 4px 4px rgba(165, 163, 163, 0.315),
       4px 4px 4px rgba(218, 218, 218, 0.13);
   }
+
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+
+.views h2{
+  text-align: center;
+  font-size: 40px;
+}
+table {
+  background: #ffffff25;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-bottom: 15%;
+  
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #012B39;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+td {
+  color: #364043;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+.disabled td {
+  color: #4F5F64;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}

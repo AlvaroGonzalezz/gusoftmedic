@@ -1,23 +1,40 @@
 <?php 
 
     include("conexion.php");
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
-    $nombre = $_POST['nombre'];
-    $apellidoPaterno = $_POST['apPaterno'];
-    $apellidoMaterno = $_POST['apMaterno'];
-    $telefono = $_POST['telefono'];
-    $fecha = $_POST['fecha'];
-    $genero = $_POST['genero'];
-    $direccion = $_POST['direccion'];
+    $id_paciente = $_POST['id-paciente'];
+    $id_enfermero = $_POST['id-enfermero'];
+    $motivo = $_POST['motivo'];
+    $presion_arterial = $_POST['presion-arterial'];
+    $frecuencia_cardiaca = $_POST['frecuencia-cardiaca'];
 
 
-    $sql = "INSERT INTO pacientes (nombre, apellidoPaterno, apellidoMaterno, fecha_nacimiento, sexo, direccion, telefono) 
-            VALUES ( '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$sexo', '$direccion', '$telefono')";
+    $sql = "INSERT INTO visitas (id_paciente, id_enfermero, motivo_visita, presion_arterial, frecuencia_cardiaca) 
+            VALUES ( '$id_paciente', '$id_enfermero', '$motivo', '$presion_arterial', '$frecuencia_cardiaca')";
 
-    if ($conexion->query($sql) === TRUE) {
-        echo "<script>alert('Registro exitoso');</script>";
-    } else {
-        echo "Error al registrar: " . $conexion->error;
-    }
+if ($conexion->query($sql) === TRUE) {
+    echo "
+        <html><body><script> Swal.fire({
+  title: 'Registro exitoso',
+  text: 'La visita se ha registrado con éxito',
+  icon: 'success'
+}).then((result) => {
+                if (result.isConfirmed) {
+         window.location.href = 'dashboard.php'                                }
+            }); </script></body></html>
+        ";
+} else {
+    echo "
 
+    <html><body><script> Swal.fire({
+title: 'Error al registrar',
+text: 'Error en el sistema, intentelo más tarde.',
+icon: 'error'
+}).then((result) => {
+            if (result.isConfirmed) {
+     window.location.href = 'dashboard.php'                                }
+        }); </script></body></html>
+    ";
+}
 ?>
